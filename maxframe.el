@@ -178,6 +178,7 @@ specified by HEIGHT."
       (set-frame-parameter target-frame 'mf-restore-top    nil)
       (set-frame-parameter target-frame 'mf-restore-left   nil))))
 
+;;;###autoload
 (defun maximize-frame ( &optional the-frame)
   "Maximizes the frame to fit the display if under a windowing
 system."
