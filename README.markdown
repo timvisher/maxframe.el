@@ -17,8 +17,12 @@ mf-max-width value set to the pixel width of main framebuffer. This is
 necessary because emacs does not yet support sniffing different
 framebuffers. Example:
 
-    M-x customize-group RET maxframe RET set mf-max-width to 1600 ;; Pixel
-    width of main monitor. (add-hook 'window-setup-hook 'maximize-frame t)
+    M-x customize-group RET maxframe RET
+    set mf-max-width to 1600 ;; Pixel width of main monitor.
+
+    ;; In init.el
+    
+    (add-hook 'window-setup-hook 'maximize-frame t)
 
 To restore the frame to it's original dimensions, call restore-frame:
 
