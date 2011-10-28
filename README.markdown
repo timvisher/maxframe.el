@@ -5,19 +5,20 @@ the display resolution.
 
 ## Usage
 
-Example of lines to be added to your .emacs:
+[Autoload comments][1] are provided. If you're installing this via elpa you
+shouldn't need to do anything else.
 
-    (require 'maxframe)
-    (add-hook 'window-setup-hook 'maximize-frame t)
+Otherwise, add maxframe.el to your load-path and run some form of
+`(autoload 'maximize-frame "maxframe" "Maximize the focussed frame." t)` in
+your init.el.
 
 If using two framebuffers (monitors), it might be necesssary to specify a
-mf-max-width value set to the pixel width of main framebuffer.  This is
+mf-max-width value set to the pixel width of main framebuffer. This is
 necessary because emacs does not yet support sniffing different
-framebuffers.  Example:
+framebuffers. Example:
 
-    (require 'maxframe)
-    (setq mf-max-width 1600)  ;; Pixel width of main monitor.
-    (add-hook 'window-setup-hook 'maximize-frame t)
+    M-x customize-group RET maxframe RET set mf-max-width to 1600 ;; Pixel
+    width of main monitor. (add-hook 'window-setup-hook 'maximize-frame t)
 
 To restore the frame to it's original dimensions, call restore-frame:
 
@@ -33,15 +34,14 @@ the maximum number of columns and rows that can fit in the display
 Requires Emacs 22 (for fringe support), but maximize-frame still works
 under Emacs 21 on Windows.
 
-Emacs does not recognize when the display's resolution is changed. This is
-a problem because I would like to be able to re-maximize the frame after
-connecting to a display with different resolution. Unfortunately,
-display-pixel-width and display-pixel-height yield the display resolution
-values from when emacs was started instead of the current display
-values. Perhaps there's a way to have emacs re-sniff these values, but I'm
-not yet sure how.
+`maximize-frame` cannot automatically re-maximize when the resolution of
+your monitor has changed. However, it should properly maximize the frame if
+you manually call `maximize-frame` again. If you know a hook that emacs has
+when the display resolution has been changed, let the developers know.
 
 ## Credits
 
 The w32 specific functions were borrowed from the Emacs Manual:
 http://www.gnu.org/software/emacs/windows/big.html#windows-like-window-ops
+
+[1]: http://www.gnu.org/software/emacs/elisp/html_node/Autoload.html
